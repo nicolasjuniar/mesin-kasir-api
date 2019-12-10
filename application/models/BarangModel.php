@@ -7,8 +7,7 @@ class BarangModel extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('tbl_barang');
-		$list_barang = $this->db->get('')->row_array();
-		return $list_barang;
+		return $$this->db->get('')->row_array();
 	}
 
 	public function insertBarang($barang)
