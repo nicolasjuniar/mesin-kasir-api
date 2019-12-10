@@ -20,18 +20,18 @@ class LoginController extends CI_Controller
         if ($login != null) {
             $response = array(
                 'user' => $this->UserModel->getUser($user),
-                'message' => 'Sukses melakukan login'
+                'message' => 'Sukses melakukan login',
+                'status_code' => 200
             );
-            $code = 200;
         } else {
             $response = array(
-                'message' => 'Username atau password'
+                'message' => 'Username atau password salah',
+                'status_code' => 401
             );
-            $code = 401;
         }
 
         $this->output
-            ->set_status_header($code)
+            ->set_status_header($response['status_code'])
             ->set_content_type('application/json', 'utf-8')
             ->set_output(json_encode($response, JSON_PRETTY_PRINT))
             ->_display();

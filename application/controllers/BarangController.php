@@ -15,26 +15,29 @@ class BarangController extends CI_Controller
 	public function getAllBarang()
 	{
 		$response = array(
-			'list_barang' => $this->BarangModel->getAllBarang()
+			'data' => $this->BarangModel->getAllBarang(),
+			'status_code' => 200
 		);
 
 		$this->output
-			->set_status_header(200)
+			->set_status_header($response['status_code'])
 			->set_content_type('application/json', 'utf-8')
 			->set_output(json_encode($response, JSON_PRETTY_PRINT))
 			->_display();
 		exit;
 	}
 
-	public function insertBarang(){
+	public function insertBarang()
+	{
 		$barang = json_decode(file_get_contents('php://input'), true);
 		$this->BarangModel->insertBarang($barang);
 		$response = array(
-			'message' => 'Sukses menambahkan barang'
+			'message' => 'Sukses menambahkan barang',
+			'status_code' => 200
 		);
 
 		$this->output
-			->set_status_header(200)
+			->set_status_header($response['status_code'])
 			->set_content_type('application/json', 'utf-8')
 			->set_output(json_encode($response, JSON_PRETTY_PRINT))
 			->_display();
@@ -45,11 +48,12 @@ class BarangController extends CI_Controller
 	{
 		$this->BarangModel->deleteBarang($id);
 		$response = array(
-			'message' => 'Sukses menghapus barang'
+			'message' => 'Sukses menghapus barang',
+			'status_code' => 200
 		);
 
 		$this->output
-			->set_status_header(200)
+			->set_status_header($response['status_code'])
 			->set_content_type('application/json', 'utf-8')
 			->set_output(json_encode($response, JSON_PRETTY_PRINT))
 			->_display();
@@ -61,11 +65,12 @@ class BarangController extends CI_Controller
 		$barang = json_decode(file_get_contents('php://input'), true);
 		$this->BarangModel->updateBarang($barang);
 		$response = array(
-			'message' => 'Sukses mengupdate barang barang'
+			'message' => 'Sukses mengupdate barang barang',
+			'status_code' => 200
 		);
 
 		$this->output
-			->set_status_header(200)
+			->set_status_header($response['status_code'])
 			->set_content_type('application/json', 'utf-8')
 			->set_output(json_encode($response, JSON_PRETTY_PRINT))
 			->_display();
