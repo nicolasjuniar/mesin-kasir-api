@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -57,3 +57,5 @@ $route['barang/all']['GET'] = 'BarangController/getAllBarang';
 $route['barang/insert']['POST'] = 'BarangController/insertBarang';
 $route['barang/update']['PUT'] = 'BarangController/updateBarang';
 $route['barang/delete/(:num)']['DELETE'] = 'BarangController/deleteBarang/$1';
+
+$route['login']['POST'] = 'LoginController/login';
